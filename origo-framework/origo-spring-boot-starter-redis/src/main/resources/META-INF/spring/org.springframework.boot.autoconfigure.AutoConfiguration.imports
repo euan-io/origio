@@ -1,0 +1,2 @@
+cn.zqsoft.boot.framework.redis.config.OrigoRedisAutoConfiguration
+cn.zqsoft.boot.framework.redis.config.OrigoCacheAutoConfiguration

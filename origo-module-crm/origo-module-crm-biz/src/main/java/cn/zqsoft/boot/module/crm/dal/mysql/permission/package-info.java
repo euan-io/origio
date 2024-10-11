@@ -1,0 +1,1 @@
+package cn.zqsoft.boot.module.crm.dal.mysql.permission;

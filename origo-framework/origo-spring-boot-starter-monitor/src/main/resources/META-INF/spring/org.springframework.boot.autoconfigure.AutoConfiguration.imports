@@ -1,0 +1,2 @@
+cn.zqsoft.boot.framework.tracer.config.OrigoTracerAutoConfiguration
+cn.zqsoft.boot.framework.tracer.config.OrigoMetricsAutoConfiguration

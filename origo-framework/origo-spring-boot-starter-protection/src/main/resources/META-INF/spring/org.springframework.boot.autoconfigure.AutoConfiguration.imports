@@ -1,0 +1,4 @@
+cn.zqsoft.boot.framework.idempotent.config.OrigoIdempotentConfiguration
+cn.zqsoft.boot.framework.lock4j.config.OrigoLock4jConfiguration
+cn.zqsoft.boot.framework.ratelimiter.config.OrigoRateLimiterConfiguration
+cn.zqsoft.boot.framework.signature.config.OrigoApiSignatureAutoConfiguration

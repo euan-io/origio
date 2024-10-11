@@ -1,0 +1,6 @@
+cn.zqsoft.boot.framework.apilog.config.OrigoApiLogAutoConfiguration
+cn.zqsoft.boot.framework.jackson.config.OrigoJacksonAutoConfiguration
+cn.zqsoft.boot.framework.swagger.config.OrigoSwaggerAutoConfiguration
+cn.zqsoft.boot.framework.web.config.OrigoWebAutoConfiguration
+cn.zqsoft.boot.framework.xss.config.OrigoXssAutoConfiguration
+cn.zqsoft.boot.framework.banner.config.OrigoBannerAutoConfiguration

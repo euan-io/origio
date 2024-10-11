@@ -1,0 +1,3 @@
+cn.zqsoft.boot.framework.security.config.OrigoSecurityAutoConfiguration
+cn.zqsoft.boot.framework.security.config.OrigoWebSecurityConfigurerAdapter
+cn.zqsoft.boot.framework.operatelog.config.OrigoOperateLogConfiguration

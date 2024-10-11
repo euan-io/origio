@@ -1,0 +1,3 @@
+cn.zqsoft.boot.framework.datasource.config.OrigoDataSourceAutoConfiguration
+cn.zqsoft.boot.framework.mybatis.config.OrigoMybatisAutoConfiguration
+cn.zqsoft.boot.framework.translate.config.OrigoTranslateAutoConfiguration

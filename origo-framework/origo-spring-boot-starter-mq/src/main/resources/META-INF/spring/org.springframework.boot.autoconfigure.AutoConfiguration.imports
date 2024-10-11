@@ -1,0 +1,3 @@
+cn.zqsoft.boot.framework.mq.redis.config.OrigoRedisMQProducerAutoConfiguration
+cn.zqsoft.boot.framework.mq.redis.config.OrigoRedisMQConsumerAutoConfiguration
+cn.zqsoft.boot.framework.mq.rabbitmq.config.OrigoRabbitMQAutoConfiguration

@@ -1,0 +1,2 @@
+cn.zqsoft.boot.framework.quartz.config.OrigoQuartzAutoConfiguration
+cn.zqsoft.boot.framework.quartz.config.OrigoAsyncAutoConfiguration
