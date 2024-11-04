@@ -15,15 +15,15 @@
         <!-- 各种 module 拓展 -->
         <module>origo-module-system</module>
         <module>origo-module-infra</module>
-<!--        <module>origo-module-member</module>-->
-<!--        <module>origo-module-bpm</module>-->
-<!--        <module>origo-module-report</module>-->
-<!--        <module>origo-module-mp</module>-->
-<!--        <module>origo-module-pay</module>-->
-<!--        <module>origo-module-mall</module>-->
-<!--        <module>origo-module-crm</module>-->
-<!--        <module>origo-module-erp</module>-->
-<!--        <module>origo-module-iot</module>-->
+        <module>origo-module-member</module>
+        <module>origo-module-bpm</module>
+        <module>origo-module-report</module>
+        <module>origo-module-mp</module>
+        <module>origo-module-pay</module>
+        <module>origo-module-mall</module>
+        <module>origo-module-crm</module>
+        <module>origo-module-erp</module>
+        <module>origo-module-iot</module>
         <!-- AI 大模型的开启，请参考 https://doc.iocoder.cn/ai/build/ 文档，对 JDK 版本要要求！ -->
 <!--        <module>origo-module-ai</module>-->
     </modules>
@@ -98,36 +98,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <!-- 使用 huawei / aliyun 的 Maven 源，提升下载速度 -->
-    <repositories>
-        <repository>
-            <id>huaweicloud</id>
-            <name>huawei</name>
-            <url>https://mirrors.huaweicloud.com/repository/maven/</url>
-        </repository>
-        <repository>
-            <id>aliyunmaven</id>
-            <name>aliyun</name>
-            <url>https://maven.aliyun.com/repository/public</url>
-        </repository>
-
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
 
 </project>
