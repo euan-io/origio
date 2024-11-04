@@ -33,7 +33,7 @@
     <url>https://github.com/euan-io/origio</url>
 
     <properties>
-        <revision>1.0.0</revision>
+        <revision>1.1.0</revision>
         <!-- Maven 相关 -->
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
