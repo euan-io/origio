@@ -1,4 +1,4 @@
-芋道源码 http://www.iocoder.cn
+原点基础 http://doc.deveuan.top
 Application Version: ${origo.info.version}
 Spring Boot Version: ${spring-boot.version}
 
