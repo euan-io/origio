@@ -10,8 +10,6 @@
     <modules>
         <module>origo-dependencies</module>
         <module>origo-framework</module>
-        <!-- Server 主项目 -->
-        <module>origo-server</module>
         <!-- 各种 module 拓展 -->
         <module>origo-module-system</module>
         <module>origo-module-infra</module>
