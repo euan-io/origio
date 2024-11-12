@@ -10,7 +10,7 @@ import cn.zqsoft.boot.framework.mybatis.core.dataobject.BaseDO;
 /**
  * BPM 流程表达式 DO
  *
- * @author 芋道源码
+ * @author Euan
  */
 @TableName("bpm_process_expression")
 @KeySequence("bpm_process_expression_seq") // 用于 Oracle、PostgreSQL、Kingbase、DB2、H2 数据库的主键自增。如果是 MySQL 等数据库，可不写。

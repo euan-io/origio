@@ -15,7 +15,7 @@ import static cn.zqsoft.boot.module.mp.enums.ErrorCodeConstants.USER_NOT_EXISTS;
 /**
  * 公众号粉丝 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface MpUserService {
 

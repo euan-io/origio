@@ -29,7 +29,7 @@ import static cn.zqsoft.boot.module.system.enums.ErrorCodeConstants.*;
 /**
  * OAuth2.0 Client Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

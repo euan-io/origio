@@ -13,7 +13,7 @@ import static cn.zqsoft.boot.framework.security.core.util.SecurityFrameworkUtils
 /**
  * 默认的 {@link SecurityFrameworkService} 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @AllArgsConstructor
 public class SecurityFrameworkServiceImpl implements SecurityFrameworkService {

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * ERP 库存盘点单项 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ErpStockCheckItemMapper extends BaseMapperX<ErpStockCheckItemDO> {

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * S3 协议的客户端，采用亚马逊提供的 software.amazon.awssdk.s3 库
  *
- * @author 芋道源码
+ * @author Euan
  */
 public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
 
@@ -33,9 +33,12 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
         }
         // 初始化客户端
         client = MinioClient.builder()
-                .endpoint(buildEndpointURL()) // Endpoint URL
-                .region(buildRegion()) // Region
-                .credentials(config.getAccessKey(), config.getAccessSecret()) // 认证密钥
+                // Endpoint URL
+                .endpoint(buildEndpointURL())
+                // Region
+                .region(buildRegion())
+                // 认证密钥
+                .credentials(config.getAccessKey(), config.getAccessSecret())
                 .build();
         enableVirtualStyleEndpoint();
     }
@@ -76,13 +79,15 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
         // 阿里云必须有 region，否则会报错
         if (config.getEndpoint().contains(S3FileClientConfig.ENDPOINT_ALIYUN)) {
             return StrUtil.subBefore(config.getEndpoint(), '.', false)
-                    .replaceAll("-internal", "")// 去除内网 Endpoint 的后缀
+                    // 去除内网 Endpoint 的后缀
+                    .replaceAll("-internal", "")
                     .replaceAll("https://", "");
         }
         // 腾讯云必须有 region，否则会报错
         if (config.getEndpoint().contains(S3FileClientConfig.ENDPOINT_TENCENT)) {
             return StrUtil.subAfter(config.getEndpoint(), "cos.", false)
-                    .replaceAll("." + S3FileClientConfig.ENDPOINT_TENCENT, ""); // 去除 Endpoint
+                    // 去除 Endpoint
+                    .replaceAll("." + S3FileClientConfig.ENDPOINT_TENCENT, "");
         }
         return null;
     }
@@ -92,8 +97,10 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
      */
     private void enableVirtualStyleEndpoint() {
         if (StrUtil.containsAny(config.getEndpoint(),
-                S3FileClientConfig.ENDPOINT_TENCENT, // 腾讯云 https://cloud.tencent.com/document/product/436/41284
-                S3FileClientConfig.ENDPOINT_VOLCES)) { // 火山云 https://www.volcengine.com/docs/6349/1288493
+                // 腾讯云 https://cloud.tencent.com/document/product/436/41284
+                S3FileClientConfig.ENDPOINT_TENCENT,
+                // 火山云 https://www.volcengine.com/docs/6349/1288493
+                S3FileClientConfig.ENDPOINT_VOLCES)) {
             client.enableVirtualStyleEndpoint();
         }
     }
@@ -102,28 +109,35 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
     public String upload(byte[] content, String path, String type) throws Exception {
         // 执行上传
         client.putObject(PutObjectArgs.builder()
-                .bucket(config.getBucket()) // bucket 必须传递
+                // bucket 必须传递
+                .bucket(config.getBucket())
                 .contentType(type)
-                .object(path) // 相对路径作为 key
-                .stream(new ByteArrayInputStream(content), content.length, -1) // 文件内容
+                // 相对路径作为 key
+                .object(path)
+                // 文件内容
+                .stream(new ByteArrayInputStream(content), content.length, -1)
                 .build());
         // 拼接返回路径
-        return config.getDomain() + "/" + path;
+        return super.formatFileUrl(config.getDomain(), path);
     }
 
     @Override
     public void delete(String path) throws Exception {
         client.removeObject(RemoveObjectArgs.builder()
-                .bucket(config.getBucket()) // bucket 必须传递
-                .object(path) // 相对路径作为 key
+                // bucket 必须传递
+                .bucket(config.getBucket())
+                // 相对路径作为 key
+                .object(path)
                 .build());
     }
 
     @Override
     public byte[] getContent(String path) throws Exception {
         GetObjectResponse response = client.getObject(GetObjectArgs.builder()
-                .bucket(config.getBucket()) // bucket 必须传递
-                .object(path) // 相对路径作为 key
+                // bucket 必须传递
+                .bucket(config.getBucket())
+                // 相对路径作为 key
+                .object(path)
                 .build());
         return IoUtil.readBytes(response);
     }
@@ -134,7 +148,8 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
                 .method(Method.PUT)
                 .bucket(config.getBucket())
                 .object(path)
-                .expiry(10, TimeUnit.MINUTES) // 过期时间（秒数）取值范围：1 秒 ~ 7 天
+                // 过期时间（秒数）取值范围：1 秒 ~ 7 天
+                .expiry(10, TimeUnit.MINUTES)
                 .build()
         );
         return new FilePresignedUrlRespDTO(uploadUrl, config.getDomain() + "/" + path);

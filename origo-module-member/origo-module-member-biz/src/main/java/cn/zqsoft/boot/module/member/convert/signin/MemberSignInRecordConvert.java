@@ -22,7 +22,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * 签到记录 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface MemberSignInRecordConvert {

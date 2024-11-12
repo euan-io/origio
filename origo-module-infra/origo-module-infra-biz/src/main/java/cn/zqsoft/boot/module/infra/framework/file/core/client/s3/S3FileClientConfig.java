@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 /**
  * S3 文件客户端的配置类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Data
 public class S3FileClientConfig implements FileClientConfig {
@@ -63,6 +63,8 @@ public class S3FileClientConfig implements FileClientConfig {
      */
     @NotNull(message = "accessSecret 不能为空")
     private String accessSecret;
+
+    private boolean secure = false;
 
     @SuppressWarnings("RedundantIfStatement")
     @AssertTrue(message = "domain 不能为空")

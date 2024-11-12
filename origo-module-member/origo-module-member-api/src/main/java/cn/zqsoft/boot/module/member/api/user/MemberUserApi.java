@@ -11,7 +11,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * 会员用户的 API 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface MemberUserApi {
 

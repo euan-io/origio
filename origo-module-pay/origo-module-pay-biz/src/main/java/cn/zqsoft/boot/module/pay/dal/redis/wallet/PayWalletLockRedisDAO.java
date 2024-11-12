@@ -13,7 +13,7 @@ import static cn.zqsoft.boot.module.pay.dal.redis.RedisKeyConstants.PAY_WALLET_L
 /**
  * 支付钱包的锁 Redis DAO
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Repository
 public class PayWalletLockRedisDAO {

@@ -45,7 +45,7 @@ import static cn.zqsoft.boot.module.bpm.enums.ErrorCodeConstants.*;
  * 主要进行 Flowable {@link Model} 的维护
  *
  * @author yunlongn
- * @author 芋道源码
+ * @author Euan
  * @author jason
  */
 @Service

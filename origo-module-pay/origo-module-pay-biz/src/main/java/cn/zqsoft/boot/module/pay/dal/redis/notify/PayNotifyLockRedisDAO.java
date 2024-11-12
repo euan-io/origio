@@ -12,7 +12,7 @@ import static cn.zqsoft.boot.module.pay.dal.redis.RedisKeyConstants.PAY_NOTIFY_L
 /**
  * 支付通知的锁 Redis DAO
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Repository
 public class PayNotifyLockRedisDAO {

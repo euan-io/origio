@@ -37,7 +37,7 @@ import static cn.zqsoft.boot.module.infra.enums.ErrorCodeConstants.FILE_CONFIG_N
 /**
  * 文件配置 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated
@@ -51,7 +51,7 @@ public class FileConfigServiceImpl implements FileConfigService {
      */
     @Getter
     private final LoadingCache<Long, FileClient> clientCache = buildAsyncReloadingCache(Duration.ofSeconds(10L),
-            new CacheLoader<Long, FileClient>() {
+            new CacheLoader<>() {
 
                 @Override
                 public FileClient load(Long id) {
@@ -78,7 +78,8 @@ public class FileConfigServiceImpl implements FileConfigService {
     public Long createFileConfig(FileConfigSaveReqVO createReqVO) {
         FileConfigDO fileConfig = FileConfigConvert.INSTANCE.convert(createReqVO)
                 .setConfig(parseClientConfig(createReqVO.getStorage(), createReqVO.getConfig()))
-                .setMaster(false); // 默认非 master
+                // 默认非 master
+                .setMaster(false);
         fileConfigMapper.insert(fileConfig);
         return fileConfig.getId();
     }

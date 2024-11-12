@@ -30,7 +30,7 @@ import static cn.zqsoft.boot.module.trade.enums.ErrorCodeConstants.PRICE_CALCULA
 /**
  * 优惠劵的 {@link TradePriceCalculator} 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 @Order(TradePriceCalculator.ORDER_COUPON)

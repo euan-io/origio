@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 短信发送消息
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Data
 public class SmsSendMessage {

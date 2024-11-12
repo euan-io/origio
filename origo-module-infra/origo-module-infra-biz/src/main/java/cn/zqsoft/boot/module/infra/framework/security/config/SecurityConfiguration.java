@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configurers.AuthorizeH
 
 /**
  * Infra 模块的 Security 配置
+ * @author Euan
  */
 @Configuration(proxyBeanMethods = false, value = "infraSecurityConfiguration")
 public class SecurityConfiguration {

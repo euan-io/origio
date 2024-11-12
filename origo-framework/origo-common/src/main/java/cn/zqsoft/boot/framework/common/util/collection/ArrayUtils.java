@@ -13,7 +13,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * Array 工具类
  *
- * @author 芋道源码
+ * @author Euan
  */
 public class ArrayUtils {
 

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * erp 模块的 web 组件的 Configuration
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Configuration(proxyBeanMethods = false)
 public class ErpWebConfiguration {

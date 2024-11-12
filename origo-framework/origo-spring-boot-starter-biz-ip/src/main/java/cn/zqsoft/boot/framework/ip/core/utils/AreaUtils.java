@@ -22,7 +22,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.fi
 /**
  * 区域工具类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Slf4j
 public class AreaUtils {

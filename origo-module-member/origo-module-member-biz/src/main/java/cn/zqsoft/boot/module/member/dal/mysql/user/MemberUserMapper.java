@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * 会员 User Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface MemberUserMapper extends BaseMapperX<MemberUserDO> {

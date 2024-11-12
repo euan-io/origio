@@ -19,7 +19,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * 商品 SPU Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ProductSpuConvert {

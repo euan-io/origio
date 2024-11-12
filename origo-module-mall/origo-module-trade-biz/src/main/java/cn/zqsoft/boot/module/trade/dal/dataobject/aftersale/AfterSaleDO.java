@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 售后订单，用于处理 {@link TradeOrderDO} 交易订单的退款退货流程
  *
- * @author 芋道源码
+ * @author Euan
  */
 @TableName(value = "trade_after_sale", autoResultMap = true)
 @Data

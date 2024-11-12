@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 会员标签 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface MemberTagConvert {

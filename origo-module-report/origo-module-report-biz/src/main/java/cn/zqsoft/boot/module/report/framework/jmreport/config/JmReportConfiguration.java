@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 积木报表的配置类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Configuration(proxyBeanMethods = false)
 @ComponentScan(basePackages = "org.jeecg.modules.jmreport") // 扫描积木报表的包

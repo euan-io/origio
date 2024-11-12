@@ -13,7 +13,7 @@ import javax.validation.Valid;
 /**
  * 公众号消息 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface MpMessageService {
 

@@ -62,7 +62,7 @@ import static cn.zqsoft.boot.module.bpm.framework.flowable.core.enums.BpmnVariab
 /**
  * 流程任务实例 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  * @author jason
  */
 @Slf4j

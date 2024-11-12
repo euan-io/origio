@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * {@link OpenAiChatModel} 集成测试
  *
- * @author 芋道源码
+ * @author Euan
  */
 public class OpenAIChatModelTests {
 

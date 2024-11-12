@@ -23,7 +23,7 @@ import static cn.zqsoft.boot.framework.pay.core.client.impl.weixin.AbstractWxPay
 /**
  * {@link WxBarPayClient} 的集成测试，用于快速调试微信条码支付
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Disabled
 public class WxBarPayClientIntegrationTest {

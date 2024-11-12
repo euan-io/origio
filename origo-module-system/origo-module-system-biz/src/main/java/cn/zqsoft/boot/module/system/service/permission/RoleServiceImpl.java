@@ -39,7 +39,7 @@ import static cn.zqsoft.boot.module.system.enums.LogRecordConstants.*;
 /**
  * 角色 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Slf4j

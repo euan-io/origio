@@ -16,7 +16,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * ERP 产品 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface ErpProductService {
 

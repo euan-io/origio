@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * 支付通知 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface PayNotifyTaskConvert {

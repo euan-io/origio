@@ -15,7 +15,7 @@ import static cn.zqsoft.boot.module.mp.enums.ErrorCodeConstants.ACCOUNT_NOT_EXIS
 /**
  * 公众号账号 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface MpAccountService {
 

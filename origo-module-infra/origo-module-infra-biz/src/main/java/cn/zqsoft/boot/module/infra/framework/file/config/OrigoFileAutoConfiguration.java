@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 文件配置类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Configuration(proxyBeanMethods = false)
 public class OrigoFileAutoConfiguration {

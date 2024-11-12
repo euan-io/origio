@@ -19,7 +19,7 @@ import static cn.zqsoft.boot.module.report.enums.ErrorCodeConstants.GO_VIEW_PROJ
 /**
  * GoView 项目 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

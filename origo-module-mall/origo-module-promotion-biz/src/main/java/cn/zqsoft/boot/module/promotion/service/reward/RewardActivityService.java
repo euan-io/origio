@@ -21,7 +21,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.ge
 /**
  * 满减送活动 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface RewardActivityService {
 

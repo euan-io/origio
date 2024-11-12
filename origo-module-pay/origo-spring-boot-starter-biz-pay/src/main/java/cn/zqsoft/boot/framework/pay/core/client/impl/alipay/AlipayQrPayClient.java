@@ -19,7 +19,7 @@ import static cn.zqsoft.boot.framework.pay.core.client.impl.alipay.AlipayPayClie
  *
  * 文档：<a href="https://opendocs.alipay.com/apis/02890k">扫码支付</a>
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Slf4j
 public class AlipayQrPayClient extends AbstractAlipayPayClient {

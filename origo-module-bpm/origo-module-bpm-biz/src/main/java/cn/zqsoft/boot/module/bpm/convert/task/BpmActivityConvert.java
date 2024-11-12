@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * BPM 活动 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper(uses = DateUtils.class)
 public interface BpmActivityConvert {

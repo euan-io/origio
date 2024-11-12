@@ -3,7 +3,7 @@ package cn.zqsoft.boot.framework.common.core;
 /**
  * 可生成 Int 数组的接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface IntArrayValuable {
 

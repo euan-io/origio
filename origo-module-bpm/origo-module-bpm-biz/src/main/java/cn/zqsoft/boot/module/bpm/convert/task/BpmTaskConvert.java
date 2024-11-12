@@ -34,7 +34,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.MapUtils.findAndTh
 /**
  * Bpm 任务 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface BpmTaskConvert {

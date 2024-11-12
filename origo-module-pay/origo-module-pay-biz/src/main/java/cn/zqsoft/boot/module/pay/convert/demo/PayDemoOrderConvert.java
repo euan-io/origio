@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 /**
  * 示例订单 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface PayDemoOrderConvert {

@@ -19,7 +19,7 @@ import static cn.zqsoft.boot.module.system.dal.redis.RedisKeyConstants.OAUTH2_AC
 /**
  * {@link OAuth2AccessTokenDO} 的 RedisDAO
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Repository
 public class OAuth2AccessTokenRedisDAO {

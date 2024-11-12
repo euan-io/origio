@@ -1,6 +1,6 @@
 /**
  * 属于 product 模块的 framework 封装
  *
- * @author 芋道源码
+ * @author Euan
  */
 package cn.zqsoft.boot.module.product.framework;

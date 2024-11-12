@@ -3,7 +3,7 @@ package cn.zqsoft.boot.framework.quartz.core.handler;
 /**
  * 任务处理器
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface JobHandler {
 

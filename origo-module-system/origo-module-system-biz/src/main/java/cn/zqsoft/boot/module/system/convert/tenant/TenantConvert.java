@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 /**
  * 租户 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface TenantConvert {

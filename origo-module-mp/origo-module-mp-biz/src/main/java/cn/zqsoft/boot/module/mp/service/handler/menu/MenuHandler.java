@@ -20,7 +20,7 @@ import static me.chanjar.weixin.common.api.WxConsts.MenuButtonType;
  *
  * 逻辑：粉丝点击菜单时，触发对应的回复
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 public class MenuHandler implements WxMpMessageHandler {

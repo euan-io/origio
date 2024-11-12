@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 微信公众号 JSAPI 签名 Response DTO
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Data
 public class SocialWxJsapiSignatureRespDTO {

@@ -24,7 +24,7 @@ import static cn.zqsoft.boot.module.member.enums.ErrorCodeConstants.*;
 /**
  * 会员标签 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

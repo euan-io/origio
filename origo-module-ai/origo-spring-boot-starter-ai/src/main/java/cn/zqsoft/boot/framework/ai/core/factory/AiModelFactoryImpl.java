@@ -73,7 +73,7 @@ import java.util.List;
 /**
  * AI Model 模型工厂的实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 public class AiModelFactoryImpl implements AiModelFactory {
 

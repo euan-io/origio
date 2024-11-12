@@ -20,7 +20,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * 优惠劵 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface CouponMapper extends BaseMapperX<CouponDO> {

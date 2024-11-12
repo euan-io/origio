@@ -9,7 +9,7 @@ import cn.zqsoft.boot.module.member.dal.dataobject.signin.MemberSignInRecordDO;
 /**
  * 签到记录 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface MemberSignInRecordService {
 

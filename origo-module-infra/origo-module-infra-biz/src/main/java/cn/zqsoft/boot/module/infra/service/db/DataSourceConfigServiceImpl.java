@@ -21,7 +21,7 @@ import static cn.zqsoft.boot.module.infra.enums.ErrorCodeConstants.DATA_SOURCE_C
 /**
  * 数据源配置 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

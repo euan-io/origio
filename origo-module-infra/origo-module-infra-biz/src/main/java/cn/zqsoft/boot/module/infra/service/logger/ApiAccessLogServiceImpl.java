@@ -22,7 +22,7 @@ import static cn.zqsoft.boot.module.infra.dal.dataobject.logger.ApiAccessLogDO.R
 /**
  * API 访问日志 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Slf4j
 @Service

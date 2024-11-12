@@ -54,7 +54,7 @@ import static cn.zqsoft.boot.module.pay.framework.job.config.PayJobConfiguration
 /**
  * 支付通知 Core Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Valid

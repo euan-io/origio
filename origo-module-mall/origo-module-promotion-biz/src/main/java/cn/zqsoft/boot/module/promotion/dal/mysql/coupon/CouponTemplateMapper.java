@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 /**
  * 优惠劵模板 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface CouponTemplateMapper extends BaseMapperX<CouponTemplateDO> {

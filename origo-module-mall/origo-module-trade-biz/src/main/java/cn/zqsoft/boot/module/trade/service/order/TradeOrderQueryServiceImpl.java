@@ -37,7 +37,7 @@ import static cn.zqsoft.boot.module.trade.enums.ErrorCodeConstants.ORDER_NOT_FOU
 /**
  * 交易订单【读】 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 public class TradeOrderQueryServiceImpl implements TradeOrderQueryService {

@@ -17,7 +17,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * ERP 销售出库项 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ErpSaleOutItemMapper extends BaseMapperX<ErpSaleOutItemDO> {

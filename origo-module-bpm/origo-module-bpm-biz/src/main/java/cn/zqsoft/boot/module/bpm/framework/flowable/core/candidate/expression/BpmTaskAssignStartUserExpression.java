@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * 分配给发起人审批的 Expression 流程表达式
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 public class BpmTaskAssignStartUserExpression {

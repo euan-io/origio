@@ -11,7 +11,7 @@ import lombok.Getter;
 /**
  * 支付渠道的编码的枚举
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Getter
 @AllArgsConstructor

@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * IoT 设备 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface IotDeviceMapper extends BaseMapperX<IotDeviceDO> {

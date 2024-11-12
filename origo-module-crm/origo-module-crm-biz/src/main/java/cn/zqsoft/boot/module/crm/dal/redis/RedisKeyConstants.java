@@ -3,7 +3,7 @@ package cn.zqsoft.boot.module.crm.dal.redis;
 /**
  * CRM Redis Key 枚举类
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface RedisKeyConstants {
 

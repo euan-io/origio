@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
 * {@link SeckillActivityServiceImpl} 的单元测试类
 *
-* @author 芋道源码
+* @author Euan
 */
 @Import(SeckillActivityServiceImpl.class)
 @Disabled // TODO 芋艿：未来开启

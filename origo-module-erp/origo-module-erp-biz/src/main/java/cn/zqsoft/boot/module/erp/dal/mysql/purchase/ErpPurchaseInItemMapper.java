@@ -17,7 +17,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * ERP 采购入库项 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ErpPurchaseInItemMapper extends BaseMapperX<ErpPurchaseInItemDO> {

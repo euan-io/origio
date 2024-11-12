@@ -3,7 +3,7 @@ package cn.zqsoft.boot.module.infra.api.file;
 /**
  * 文件 API 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface FileApi {
 

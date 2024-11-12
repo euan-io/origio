@@ -21,7 +21,7 @@ import static cn.zqsoft.boot.module.mp.enums.ErrorCodeConstants.*;
 /**
  * 公众号统计 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 public class MpStatisticsServiceImpl implements MpStatisticsService {

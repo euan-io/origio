@@ -17,7 +17,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * ERP 销售退货项 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ErpSaleReturnItemMapper extends BaseMapperX<ErpSaleReturnItemDO> {

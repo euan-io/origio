@@ -10,7 +10,7 @@ import cn.zqsoft.boot.module.infra.controller.admin.demo.demo03.vo.*;
 /**
  * 学生 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface Demo03StudentMapper extends BaseMapperX<Demo03StudentDO> {

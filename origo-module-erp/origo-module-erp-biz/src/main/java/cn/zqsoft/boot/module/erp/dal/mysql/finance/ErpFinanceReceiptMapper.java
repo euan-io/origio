@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * ERP 收款单 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ErpFinanceReceiptMapper extends BaseMapperX<ErpFinanceReceiptDO> {

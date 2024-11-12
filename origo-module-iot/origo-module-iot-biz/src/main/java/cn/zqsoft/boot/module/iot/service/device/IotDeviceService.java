@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * IoT 设备 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface IotDeviceService {
 

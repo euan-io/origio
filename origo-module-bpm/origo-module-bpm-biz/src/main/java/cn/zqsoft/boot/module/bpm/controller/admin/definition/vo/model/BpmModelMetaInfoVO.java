@@ -17,7 +17,7 @@ import java.util.List;
  *
  * 最终，它的字段和 {@link cn.zqsoft.boot.module.bpm.dal.dataobject.definition.BpmProcessDefinitionInfoDO} 是一致的
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Data
 public class BpmModelMetaInfoVO {

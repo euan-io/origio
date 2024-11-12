@@ -17,7 +17,7 @@ import static cn.zqsoft.boot.module.member.enums.ErrorCodeConstants.USER_MOBILE_
 /**
  * 会员用户的 API 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

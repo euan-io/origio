@@ -35,7 +35,7 @@ import static cn.zqsoft.boot.module.iot.enums.ErrorCodeConstants.*;
 /**
  * IoT 产品物模型 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

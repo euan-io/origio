@@ -32,7 +32,7 @@ import static cn.zqsoft.boot.module.system.enums.ErrorCodeConstants.SOCIAL_USER_
 /**
  * 社交用户 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

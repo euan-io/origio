@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * ERP 产品 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface ErpProductMapper extends BaseMapperX<ErpProductDO> {

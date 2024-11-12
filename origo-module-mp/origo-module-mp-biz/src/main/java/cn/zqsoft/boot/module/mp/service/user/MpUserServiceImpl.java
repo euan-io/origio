@@ -37,7 +37,7 @@ import static cn.zqsoft.boot.module.mp.enums.ErrorCodeConstants.USER_UPDATE_TAG_
 /**
  * 微信公众号粉丝 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

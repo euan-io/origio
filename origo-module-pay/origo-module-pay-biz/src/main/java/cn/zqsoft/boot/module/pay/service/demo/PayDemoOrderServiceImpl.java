@@ -36,7 +36,7 @@ import static cn.zqsoft.boot.module.pay.enums.ErrorCodeConstants.*;
 /**
  * 示例订单 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

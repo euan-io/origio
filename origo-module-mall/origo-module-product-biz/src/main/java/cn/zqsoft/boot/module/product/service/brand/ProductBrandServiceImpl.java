@@ -23,7 +23,7 @@ import static cn.zqsoft.boot.module.product.enums.ErrorCodeConstants.*;
 /**
  * 品牌 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

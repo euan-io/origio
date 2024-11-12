@@ -3,7 +3,7 @@ package cn.zqsoft.boot.module.pay.enums;
 /**
  * Pay 字典类型的枚举类
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface DictTypeConstants {
 

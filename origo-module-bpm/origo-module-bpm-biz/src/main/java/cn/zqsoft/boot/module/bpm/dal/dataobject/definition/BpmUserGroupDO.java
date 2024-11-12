@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * BPM 用户组
  *
- * @author 芋道源码
+ * @author Euan
  */
 @TableName(value = "bpm_user_group", autoResultMap = true)
 @Data

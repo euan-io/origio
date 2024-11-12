@@ -38,7 +38,7 @@ import static cn.zqsoft.boot.module.mp.enums.ErrorCodeConstants.MESSAGE_SEND_FAI
 /**
  * 粉丝消息 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

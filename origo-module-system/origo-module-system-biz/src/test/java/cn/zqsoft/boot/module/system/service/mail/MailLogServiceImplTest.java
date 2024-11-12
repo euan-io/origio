@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * {@link MailLogServiceImpl} 的单元测试类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Import(MailLogServiceImpl.class)
 public class MailLogServiceImplTest extends BaseDbUnitTest {

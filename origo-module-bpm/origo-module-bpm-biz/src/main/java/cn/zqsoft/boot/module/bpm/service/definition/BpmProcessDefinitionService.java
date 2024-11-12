@@ -22,7 +22,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
  *
  * @author yunlong.li
  * @author ZJQ
- * @author 芋道源码
+ * @author Euan
  */
 public interface BpmProcessDefinitionService {
 

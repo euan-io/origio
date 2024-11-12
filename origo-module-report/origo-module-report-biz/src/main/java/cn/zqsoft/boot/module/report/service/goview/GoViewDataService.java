@@ -5,7 +5,7 @@ import cn.zqsoft.boot.module.report.controller.admin.goview.vo.data.GoViewDataRe
 /**
  * GoView 数据 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface GoViewDataService {
 

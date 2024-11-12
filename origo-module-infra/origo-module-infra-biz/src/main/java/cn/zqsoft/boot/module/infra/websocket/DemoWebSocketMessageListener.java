@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * WebSocket 示例：单发消息
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 public class DemoWebSocketMessageListener implements WebSocketMessageListener<DemoSendMessage> {

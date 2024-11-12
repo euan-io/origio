@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
  *
  * 每个商品，对应一条记录，通过 {@link #spuId} 和 {@link #skuId} 关联
  *
- * @author 芋道源码
+ * @author Euan
  */
 @TableName("trade_cart")
 @Data

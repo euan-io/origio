@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * 支付配置类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @AutoConfiguration
 public class OrigoPayAutoConfiguration {

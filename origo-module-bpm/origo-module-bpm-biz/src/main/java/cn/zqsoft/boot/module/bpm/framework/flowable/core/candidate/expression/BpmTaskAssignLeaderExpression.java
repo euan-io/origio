@@ -21,7 +21,7 @@ import static java.util.Collections.emptySet;
  * 分配给发起人的 Leader 审批的 Expression 流程表达式
  * 目前 Leader 的定义是，发起人所在部门的 Leader
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 public class BpmTaskAssignLeaderExpression {

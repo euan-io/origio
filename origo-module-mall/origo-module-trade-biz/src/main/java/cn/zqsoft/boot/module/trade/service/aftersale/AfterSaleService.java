@@ -12,7 +12,7 @@ import cn.zqsoft.boot.module.trade.dal.dataobject.aftersale.AfterSaleDO;
 /**
  * 售后订单 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 public interface AfterSaleService {
 

@@ -19,7 +19,7 @@ import static cn.zqsoft.boot.framework.common.exception.util.ServiceExceptionUti
 /**
  * OAuth2 授予 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 public class OAuth2GrantServiceImpl implements OAuth2GrantService {

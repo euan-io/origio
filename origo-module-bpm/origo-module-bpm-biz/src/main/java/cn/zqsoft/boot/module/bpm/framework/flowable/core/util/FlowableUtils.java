@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * Flowable 相关的工具方法
  *
- * @author 芋道源码
+ * @author Euan
  */
 public class FlowableUtils {
 

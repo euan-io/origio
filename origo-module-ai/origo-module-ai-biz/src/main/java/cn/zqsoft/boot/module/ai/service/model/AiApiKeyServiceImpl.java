@@ -27,7 +27,7 @@ import static cn.zqsoft.boot.module.ai.enums.ErrorCodeConstants.*;
 /**
  * AI API 密钥 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

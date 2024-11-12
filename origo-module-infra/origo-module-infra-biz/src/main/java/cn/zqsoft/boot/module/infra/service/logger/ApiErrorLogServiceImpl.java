@@ -25,7 +25,7 @@ import static cn.zqsoft.boot.module.infra.enums.ErrorCodeConstants.API_ERROR_LOG
 /**
  * API 错误日志 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

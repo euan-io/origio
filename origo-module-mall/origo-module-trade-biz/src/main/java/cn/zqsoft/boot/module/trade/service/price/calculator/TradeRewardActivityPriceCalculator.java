@@ -26,7 +26,7 @@ import static cn.zqsoft.boot.module.trade.service.price.calculator.TradePriceCal
 /**
  * 满减送活动的 {@link TradePriceCalculator} 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 @Order(TradePriceCalculator.ORDER_REWARD_ACTIVITY)

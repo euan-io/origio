@@ -26,7 +26,7 @@ import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.co
 /**
  * 订单分销的 {@link TradeOrderHandler} 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Component
 public class TradeBrokerageOrderHandler implements TradeOrderHandler {

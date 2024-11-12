@@ -42,7 +42,7 @@ import static cn.zqsoft.boot.module.member.enums.ErrorCodeConstants.*;
 /**
  * 会员的认证 Service 接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Slf4j

@@ -3,7 +3,7 @@ package cn.zqsoft.boot.framework.datapermission.core.rule.dept;
 /**
  * {@link DeptDataPermissionRule} 的自定义配置接口
  *
- * @author 芋道源码
+ * @author Euan
  */
 @FunctionalInterface
 public interface DeptDataPermissionRuleCustomizer {

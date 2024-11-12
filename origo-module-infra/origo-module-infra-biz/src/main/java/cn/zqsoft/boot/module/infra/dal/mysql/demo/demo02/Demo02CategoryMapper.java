@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 示例分类 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface Demo02CategoryMapper extends BaseMapperX<Demo02CategoryDO> {

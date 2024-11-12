@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 佣金提现 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface BrokerageWithdrawMapper extends BaseMapperX<BrokerageWithdrawDO> {

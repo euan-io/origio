@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * 流程实例 Convert
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface BpmProcessInstanceConvert {

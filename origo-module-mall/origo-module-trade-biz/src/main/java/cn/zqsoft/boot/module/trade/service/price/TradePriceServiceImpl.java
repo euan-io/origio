@@ -35,7 +35,7 @@ import static cn.zqsoft.boot.module.trade.enums.ErrorCodeConstants.PRICE_CALCULA
 /**
  * 价格计算 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

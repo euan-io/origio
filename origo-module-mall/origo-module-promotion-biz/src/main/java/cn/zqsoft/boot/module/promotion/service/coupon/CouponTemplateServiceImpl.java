@@ -27,7 +27,7 @@ import static cn.zqsoft.boot.module.promotion.enums.ErrorCodeConstants.COUPON_TE
 /**
  * 优惠劵模板 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated

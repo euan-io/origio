@@ -12,7 +12,7 @@ import cn.zqsoft.boot.module.infra.controller.admin.demo.vo.*;
 /**
  * 分类 Mapper
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Mapper
 public interface InfraCategoryMapper extends BaseMapperX<InfraCategoryDO> {

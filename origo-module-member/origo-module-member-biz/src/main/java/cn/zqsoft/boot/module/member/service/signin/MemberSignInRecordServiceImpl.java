@@ -35,7 +35,7 @@ import static cn.zqsoft.boot.module.member.enums.ErrorCodeConstants.SIGN_IN_RECO
 /**
  * 签到记录 Service 实现类
  *
- * @author 芋道源码
+ * @author Euan
  */
 @Service
 @Validated
