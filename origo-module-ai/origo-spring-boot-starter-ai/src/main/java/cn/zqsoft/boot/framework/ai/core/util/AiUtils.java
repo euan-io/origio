@@ -37,7 +37,7 @@ public class AiUtils {
             case OPENAI:
                 return OpenAiChatOptions.builder().withModel(model).withTemperature(temperatureF).withMaxTokens(maxTokens).build();
             case AZURE_OPENAI:
-                // TODO 芋艿：貌似没 model 字段？？？！
+                // TODO 貌似没 model 字段？？？！
                 return AzureOpenAiChatOptions.builder().withDeploymentName(model).withTemperature(temperatureF).withMaxTokens(maxTokens).build();
             case OLLAMA:
                 return OllamaOptions.create().withModel(model).withTemperature(temperatureF).withNumPredict(maxTokens);

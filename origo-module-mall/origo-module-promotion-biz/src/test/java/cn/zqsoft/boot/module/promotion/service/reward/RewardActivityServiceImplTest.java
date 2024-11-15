@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Euan
  */
-@Disabled // TODO 芋艿：后续 fix 补充的单测
+@Disabled // TODO 后续 fix 补充的单测
 public class RewardActivityServiceImplTest extends BaseMockitoUnitTest {
 
     @InjectMocks
@@ -168,7 +168,7 @@ public class RewardActivityServiceImplTest extends BaseMockitoUnitTest {
         assertPojoEquals(dbRewardActivity, pageResult.getList().get(0), "rules");
     }
 
-    // TODO 芋艿：后续完善单测
+    // TODO 后续完善单测
 //    @Test
 //    public void testGetRewardActivities_all() {
 //        LocalDateTime now = LocalDateTime.now();

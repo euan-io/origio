@@ -988,7 +988,7 @@ public class BpmTaskServiceImpl implements BpmTaskService {
                 // 审批人与提交人为同一人时，根据 BpmUserTaskAssignStartUserHandlerTypeEnum 策略进行处理
                 if (StrUtil.equals(task.getAssignee(), processInstance.getStartUserId())) {
                     // 判断是否为回退或者驳回：如果是回退或者驳回不走这个策略
-                    // TODO 芋艿：【优化】未来有没更好的判断方式？！另外，还要考虑清理机制。就是说，下次处理了之后，就移除这个标识
+                    // TODO 【优化】未来有没更好的判断方式？！另外，还要考虑清理机制。就是说，下次处理了之后，就移除这个标识
                     Boolean returnTaskFlag = runtimeService.getVariable(processInstance.getProcessInstanceId(),
                             String.format(PROCESS_INSTANCE_VARIABLE_RETURN_FLAG, task.getTaskDefinitionKey()), Boolean.class);
                     if (ObjUtil.notEqual(returnTaskFlag, Boolean.TRUE)) {

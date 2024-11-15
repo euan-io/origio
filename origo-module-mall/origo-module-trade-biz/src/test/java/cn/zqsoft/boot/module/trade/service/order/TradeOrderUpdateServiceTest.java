@@ -53,7 +53,7 @@ import static org.mockito.Mockito.when;
  * @author LeeYan9
  * @since 2022-09-07
  */
-@Disabled // TODO 芋艿：后续 fix 补充的单测
+@Disabled // TODO 后续 fix 补充的单测
 @Import({TradeOrderUpdateServiceImpl.class, TradeOrderConfig.class, CartServiceImpl.class, TradePriceServiceImpl.class,
         DeliveryExpressServiceImpl.class, TradeMessageServiceImpl.class
 })
@@ -114,7 +114,7 @@ public class TradeOrderUpdateServiceTest extends BaseDbUnitTest {
 ////                .setItems(Arrays.asList(new AppTradeOrderCreateReqVO.Item().setSkuId(1L).setCount(3),
 ////                        new AppTradeOrderCreateReqVO.Item().setSkuId(2L).setCount(4)));
 //        AppTradeOrderCreateReqVO reqVO = null;
-//        // TODO 芋艿：重新高下
+//        // TODO 重新高下
 //        // mock 方法（商品 SKU 检查）
 //        ProductSkuRespDTO sku01 = randomPojo(ProductSkuRespDTO.class, o -> o.setId(1L).setSpuId(11L)
 //                .setPrice(50).setStock(100)

@@ -8,7 +8,7 @@ package cn.zqsoft.boot.module.bpm.framework.flowable.core.enums;
  */
 public interface SimpleModelConstants {
 
-    // TODO @芋艿：条件表达式的字段名
+    // TODO @条件表达式的字段名
 
     /**
      * 网关节点默认序列流属性

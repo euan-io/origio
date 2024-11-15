@@ -15,7 +15,7 @@
     <name>${project.artifactId}</name>
     <description>
         物联网 模块，主要实现 产品管理、设备管理、协议管理等功能。
-        <!-- TODO 芋艿：后续补充下 -->
+        <!-- TODO 后续补充下 -->
     </description>
 
     <dependencies>

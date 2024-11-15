@@ -25,9 +25,10 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Euan
  */
-@AutoConfiguration(before = MybatisPlusAutoConfiguration.class) // 目的：先于 MyBatis Plus 自动配置，避免 @MapperScan 可能扫描不到 Mapper 打印 warn 日志
+@AutoConfiguration(before = MybatisPlusAutoConfiguration.class)
+// 目的：先于 MyBatis Plus 自动配置，避免 @MapperScan 可能扫描不到 Mapper 打印 warn 日志
 @MapperScan(value = "${origo.info.base-package}", annotationClass = Mapper.class,
-        lazyInitialization = "${mybatis.lazy-initialization:false}") // Mapper 懒加载，目前仅用于单元测试
+        lazyInitialization = "${mybatis.lazy-initialization:false}")
 public class OrigoMybatisAutoConfiguration {
 
     static {
@@ -41,13 +42,15 @@ public class OrigoMybatisAutoConfiguration {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor()); // 分页插件
+        // 分页插件
+        mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
         return mybatisPlusInterceptor;
     }
 
     @Bean
     public MetaObjectHandler defaultMetaObjectHandler() {
-        return new DefaultDBFieldHandler(); // 自动填充参数类
+        // 自动填充参数类
+        return new DefaultDBFieldHandler();
     }
 
     @Bean

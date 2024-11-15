@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.annotation.security.PermitAll;
 
 import static cn.zqsoft.boot.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.zqsoft.boot.framework.common.pojo.CommonResult.success;
@@ -38,6 +39,7 @@ public class AppConfigController {
     @GetMapping(value = "/get-value-by-key")
     @Operation(summary = "根据参数键名查询参数值", description = "不可见的配置，不允许返回给前端")
     @Parameter(name = "key", description = "参数键", required = true, example = "yunai.biz.username")
+    @PermitAll
     public CommonResult<String> getConfigKey(@RequestParam("key") String key) {
         ConfigDO config = configService.getConfigByKey(key);
         if (config == null) {

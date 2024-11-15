@@ -76,7 +76,7 @@ public class SimpleModelUtils {
         BpmnModel bpmnModel = new BpmnModel();
         // 不加这个 解析 Message 会报 NPE 异常 .
         bpmnModel.setTargetNamespace(BPMN2_NAMESPACE); // TODO @jason：待定：是不是搞个自定义的 namespace；
-        // TODO 芋艿：后续在 review
+        // TODO 后续在 review
 
         Process process = new Process();
         process.setId(processId);
@@ -84,7 +84,7 @@ public class SimpleModelUtils {
         process.setExecutable(Boolean.TRUE); // TODO @jason：这个是必须设置的么？
         bpmnModel.addProcess(process);
 
-        // TODO 芋艿：这里可能纠结下，到底前端传递，还是后端创建出来。
+        // TODO 这里可能纠结下，到底前端传递，还是后端创建出来。
         // 目前前端的第一个节点是“发起人节点”。这里构建一个 StartNode，用于创建 Bpmn 的 StartEvent 节点
         BpmSimpleModelNodeVO startNode = buildStartSimpleModelNode();
         startNode.setChildNode(simpleModelNode);
@@ -108,7 +108,7 @@ public class SimpleModelUtils {
         return startNode;
     }
 
-    // TODO @芋艿：在优化下这个注释
+    // TODO @在优化下这个注释
     private static void traverseNodeToBuildSequenceFlow(Process process, BpmSimpleModelNodeVO node, String targetNodeId) {
         // 1.1 无效节点返回
         if (!isValidNode(node)) {

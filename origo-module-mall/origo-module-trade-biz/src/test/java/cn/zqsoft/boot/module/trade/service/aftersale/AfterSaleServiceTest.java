@@ -42,7 +42,7 @@ import static org.mockito.Mockito.when;
  *
  * @author Euan
  */
-@Disabled // TODO 芋艿：后续 fix 补充的单测
+@Disabled // TODO 后续 fix 补充的单测
 @Import(AfterSaleServiceImpl.class)
 public class AfterSaleServiceTest extends BaseDbUnitTest {
 

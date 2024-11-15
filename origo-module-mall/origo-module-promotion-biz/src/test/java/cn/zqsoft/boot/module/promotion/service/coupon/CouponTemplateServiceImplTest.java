@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
 *
 * @author Euan
 */
-@Disabled // TODO 芋艿：后续 fix 补充的单测
+@Disabled // TODO 后续 fix 补充的单测
 @Import(CouponTemplateServiceImpl.class)
 public class CouponTemplateServiceImplTest extends BaseDbUnitTest {
 

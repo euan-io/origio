@@ -50,7 +50,7 @@ import static cn.zqsoft.boot.framework.common.util.date.LocalDateTimeUtils.befor
 import static cn.zqsoft.boot.module.promotion.enums.ErrorCodeConstants.*;
 import static cn.zqsoft.boot.module.promotion.enums.MessageTemplateConstants.COMBINATION_SUCCESS;
 
-// TODO 芋艿：等拼团记录做完，完整 review 下
+// TODO 等拼团记录做完，完整 review 下
 
 /**
  * 拼团记录 Service 实现类
@@ -79,7 +79,7 @@ public class CombinationRecordServiceImpl implements CombinationRecordService {
     @Resource
     public SocialClientApi socialClientApi;
 
-    // TODO @芋艿：在详细预览下；
+    // TODO @在详细预览下；
     @Override
     public KeyValue<CombinationActivityDO, CombinationProductDO> validateCombinationRecord(
             Long userId, Long activityId, Long headId, Long skuId, Integer count) {
