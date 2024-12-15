@@ -15,10 +15,11 @@ import java.util.stream.Collectors;
  *
  * @author Euan
  */
-public class StrUtils {
+public class StrUtils extends StrUtil{
 
     public static String maxLength(CharSequence str, int maxLength) {
-        return StrUtil.maxLength(str, maxLength - 3); // -3 的原因，是该方法会补充 ... 恰好
+        // -3 的原因，是该方法会补充 ... 恰好
+        return StrUtil.maxLength(str, maxLength - 3);
     }
 
     /**
