@@ -1,7 +1,7 @@
 package cn.zqsoft.boot.framework.mq.rabbitmq.config;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -13,14 +13,17 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.TimeZone;
 
 /**
@@ -34,7 +37,7 @@ import java.util.TimeZone;
 public class OrigoRabbitMQAutoConfiguration {
 
     @Bean
-    public ObjectMapper origoRabbitobjectMapper() {
+    public ObjectMapper origoRabbitObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         // 注册 Java 8 时间模块
         objectMapper.registerModule(new JavaTimeModule());
@@ -42,10 +45,22 @@ public class OrigoRabbitMQAutoConfiguration {
         // 禁用时间戳序列化
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        // 设置反序列化处理
-        objectMapper.enable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
-
         objectMapper.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+
+        // 注册自定义反序列化器处理 LocalDateTime 字符串
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(LocalDateTime.class, new JsonDeserializer<>() {
+            @Override
+            public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+                String dateString = p.getText();
+                DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+                LocalDateTime dateTime = LocalDateTime.parse(dateString, formatter);
+
+                // 将解析的日期转换为东八区（Asia/Shanghai）时区
+                return dateTime.atOffset(ZoneOffset.ofHours(8)).toLocalDateTime();
+            }
+        });
+        objectMapper.registerModule(module);
 
         return objectMapper;
     }
@@ -54,27 +69,27 @@ public class OrigoRabbitMQAutoConfiguration {
      * Jackson2JsonMessageConverter Bean：使用 jackson 序列化消息
      */
     @Bean
-    public MessageConverter createMessageConverter(ObjectMapper origoRabbitobjectMapper) {
+    public MessageConverter origoMessageConverter(ObjectMapper origoRabbitobjectMapper) {
         return new Jackson2JsonMessageConverter(origoRabbitobjectMapper);
     }
 
     // 配置 RabbitTemplate，绑定消息转换器
     @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter origoMessageConverter) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(messageConverter);
+        rabbitTemplate.setMessageConverter(origoMessageConverter);
         return rabbitTemplate;
     }
 
     // 批量消费
     @Bean(name = "origoBatchContainerFactory")
+    @DependsOn("origoRabbitObjectMapper")
     public SimpleRabbitListenerContainerFactory origoBatchContainerFactory(
-            SimpleRabbitListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory, ObjectMapper origoRabbitobjectMapper) {
+            SimpleRabbitListenerContainerFactoryConfigurer configurer, ConnectionFactory connectionFactory, @Qualifier("origoMessageConverter") MessageConverter origoMessageConverter) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
         factory.setBatchListener(true);
-        Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter(origoRabbitobjectMapper);
-        factory.setMessageConverter(messageConverter);
+        factory.setMessageConverter(origoMessageConverter);
         return factory;
     }
 
