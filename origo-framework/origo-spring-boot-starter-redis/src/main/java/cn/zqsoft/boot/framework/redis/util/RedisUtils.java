@@ -15,11 +15,13 @@ import java.util.function.Supplier;
  * @author Euan
  * @since 2024/12/15
  */
-@Component
-@RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class RedisUtils {
 
     private final RedisTemplate<String, Object> redisTemplate;
+
+    public RedisUtils(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 通用缓存获取逻辑
