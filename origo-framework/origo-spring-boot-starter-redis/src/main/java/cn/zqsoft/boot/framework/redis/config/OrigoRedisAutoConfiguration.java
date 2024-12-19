@@ -1,6 +1,7 @@
 package cn.zqsoft.boot.framework.redis.config;
 
 import cn.hutool.core.util.ReflectUtil;
+import cn.zqsoft.boot.framework.redis.util.RedisUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.redisson.spring.starter.RedissonAutoConfiguration;
@@ -32,6 +33,11 @@ public class OrigoRedisAutoConfiguration {
         template.setValueSerializer(buildRedisSerializer());
         template.setHashValueSerializer(buildRedisSerializer());
         return template;
+    }
+
+    @Bean
+    public RedisUtils redisUtils(RedisTemplate<String, Object> redisTemplate){
+        return new RedisUtils(redisTemplate);
     }
 
     public static RedisSerializer<?> buildRedisSerializer() {
