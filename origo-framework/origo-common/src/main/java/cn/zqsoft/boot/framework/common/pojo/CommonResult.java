@@ -4,6 +4,7 @@ import cn.zqsoft.boot.framework.common.exception.ErrorCode;
 import cn.zqsoft.boot.framework.common.exception.ServiceException;
 import cn.zqsoft.boot.framework.common.exception.enums.GlobalErrorCodeConstants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.util.Assert;
 
@@ -14,8 +15,10 @@ import java.util.Objects;
  * 通用返回
  *
  * @param <T> 数据泛型
+ * @author Euan
  */
 @Data
+@Schema(description = "通用响应结果")
 public class CommonResult<T> implements Serializable {
 
     /**
@@ -23,21 +26,22 @@ public class CommonResult<T> implements Serializable {
      *
      * @see ErrorCode#getCode()
      */
+    @Schema(description = "响应码", example = "0", requiredMode = Schema.RequiredMode.REQUIRED)
     private Integer code;
-    /**
-     * 返回数据
-     */
+
+    @Schema(description = "返回数据", requiredMode = Schema.RequiredMode.REQUIRED)
     private T data;
     /**
      * 错误提示，用户可阅读
      *
      * @see ErrorCode#getMsg() ()
      */
+    @Schema(description = "响应消息", example = "操作成功")
     private String msg;
 
     /**
      * 将传入的 result 对象，转换成另外一个泛型结果的对象
-     *
+     * <p>
      * 因为 A 方法返回的 CommonResult 对象，不满足调用其的 B 方法的返回，所以需要进行转换。
      *
      * @param result 传入的 result 对象

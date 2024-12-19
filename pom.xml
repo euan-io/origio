@@ -31,7 +31,7 @@
     <url>https://github.com/euan-io/origio</url>
 
     <properties>
-        <revision>1.2.3</revision>
+        <revision>1.2.4</revision>
         <!-- Maven 相关 -->
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>

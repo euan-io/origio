@@ -31,7 +31,7 @@ import static cn.zqsoft.boot.framework.web.core.util.WebFrameworkUtils.HEADER_TE
 
 /**
  * Swagger 自动配置类，基于 OpenAPI + Springdoc 实现。
- *
+ * <p>
  * 友情提示：
  * 1. Springdoc 文档地址：<a href="https://github.com/springdoc/springdoc-openapi">仓库</a>
  * 2. Swagger 规范，于 2015 更名为 OpenAPI 规范，本质是一个东西
@@ -41,7 +41,8 @@ import static cn.zqsoft.boot.framework.web.core.util.WebFrameworkUtils.HEADER_TE
 @AutoConfiguration
 @ConditionalOnClass({OpenAPI.class})
 @EnableConfigurationProperties(SwaggerProperties.class)
-@ConditionalOnProperty(prefix = "springdoc.api-docs", name = "enabled", havingValue = "true", matchIfMissing = true) // 设置为 false 时，禁用
+@ConditionalOnProperty(prefix = "springdoc.api-docs", name = "enabled", havingValue = "true", matchIfMissing = true)
+// 设置为 false 时，禁用
 public class OrigoSwaggerAutoConfiguration {
 
     // ========== 全局 OpenAPI 配置 ==========
@@ -49,14 +50,14 @@ public class OrigoSwaggerAutoConfiguration {
     @Bean
     public OpenAPI createApi(SwaggerProperties properties) {
         Map<String, SecurityScheme> securitySchemas = buildSecuritySchemes();
-        OpenAPI openAPI = new OpenAPI()
+        OpenAPI openApi = new OpenAPI()
                 // 接口信息
                 .info(buildInfo(properties))
                 // 接口安全配置
                 .components(new Components().securitySchemes(securitySchemas))
                 .addSecurityItem(new SecurityRequirement().addList(HttpHeaders.AUTHORIZATION));
-        securitySchemas.keySet().forEach(key -> openAPI.addSecurityItem(new SecurityRequirement().addList(key)));
-        return openAPI;
+        securitySchemas.keySet().forEach(key -> openApi.addSecurityItem(new SecurityRequirement().addList(key)));
+        return openApi;
     }
 
     /**
@@ -77,9 +78,12 @@ public class OrigoSwaggerAutoConfiguration {
     private Map<String, SecurityScheme> buildSecuritySchemes() {
         Map<String, SecurityScheme> securitySchemes = new HashMap<>();
         SecurityScheme securityScheme = new SecurityScheme()
-                .type(SecurityScheme.Type.APIKEY) // 类型
-                .name(HttpHeaders.AUTHORIZATION) // 请求头的 name
-                .in(SecurityScheme.In.HEADER); // token 所在位置
+                // 类型
+                .type(SecurityScheme.Type.APIKEY)
+                // 请求头的 name
+                .name(HttpHeaders.AUTHORIZATION)
+                // token 所在位置
+                .in(SecurityScheme.In.HEADER);
         securitySchemes.put(HttpHeaders.AUTHORIZATION, securityScheme);
         return securitySchemes;
     }
@@ -89,14 +93,14 @@ public class OrigoSwaggerAutoConfiguration {
      */
     @Bean
     @Primary // 目的：以我们创建的 OpenAPIService Bean 为主，避免一键改包后，启动报错！
-    public OpenAPIService openApiBuilder(Optional<OpenAPI> openAPI,
+    public OpenAPIService openApiBuilder(Optional<OpenAPI> openApi,
                                          SecurityService securityParser,
                                          SpringDocConfigProperties springDocConfigProperties,
                                          PropertyResolverUtils propertyResolverUtils,
                                          Optional<List<OpenApiBuilderCustomizer>> openApiBuilderCustomizers,
                                          Optional<List<ServerBaseUrlCustomizer>> serverBaseUrlCustomizers,
                                          Optional<JavadocProvider> javadocProvider) {
-        return new OpenAPIService(openAPI, securityParser, springDocConfigProperties,
+        return new OpenAPIService(openApi, securityParser, springDocConfigProperties,
                 propertyResolverUtils, openApiBuilderCustomizers, serverBaseUrlCustomizers, javadocProvider);
     }
 
@@ -131,25 +135,33 @@ public class OrigoSwaggerAutoConfiguration {
      */
     private static Parameter buildTenantHeaderParameter() {
         return new Parameter()
-                .name(HEADER_TENANT_ID) // header 名
-                .description("租户编号") // 描述
-                .in(String.valueOf(SecurityScheme.In.HEADER)) // 请求 header
-                .schema(new IntegerSchema()._default(1L).name(HEADER_TENANT_ID).description("租户编号")); // 默认：使用租户编号为 1
+                // header 名
+                .name(HEADER_TENANT_ID)
+                // 描述
+                .description("租户编号")
+                // 请求 header
+                .in(String.valueOf(SecurityScheme.In.HEADER))
+                // 默认：使用租户编号为 1
+                .schema(new IntegerSchema()._default(1L).name(HEADER_TENANT_ID).description("租户编号"));
     }
 
     /**
      * 构建 Authorization 认证请求头参数
-     *
+     * <p>
      * 解决 Knife4j <a href="https://gitee.com/xiaoym/knife4j/issues/I69QBU">Authorize 未生效，请求header里未包含参数</a>
      *
      * @return 认证参数
      */
     private static Parameter buildSecurityHeaderParameter() {
         return new Parameter()
-                .name(HttpHeaders.AUTHORIZATION) // header 名
-                .description("认证 Token") // 描述
-                .in(String.valueOf(SecurityScheme.In.HEADER)) // 请求 header
-                .schema(new StringSchema()._default("Bearer test1").name(HEADER_TENANT_ID).description("认证 Token")); // 默认：使用用户编号为 1
+                // header 名
+                .name(HttpHeaders.AUTHORIZATION)
+                // 描述
+                .description("认证 Token")
+                // 请求 header
+                .in(String.valueOf(SecurityScheme.In.HEADER))
+                // 默认：使用用户编号为 1
+                .schema(new StringSchema()._default("Bearer test1").name(HEADER_TENANT_ID).description("认证 Token"));
     }
 
 }
