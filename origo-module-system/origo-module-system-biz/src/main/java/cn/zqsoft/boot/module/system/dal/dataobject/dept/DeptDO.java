@@ -28,6 +28,11 @@ public class DeptDO extends TenantBaseDO {
      */
     @TableId
     private Long id;
+
+    /**
+     * 部门编码
+     */
+    private Long code;
     /**
      * 部门名称
      */

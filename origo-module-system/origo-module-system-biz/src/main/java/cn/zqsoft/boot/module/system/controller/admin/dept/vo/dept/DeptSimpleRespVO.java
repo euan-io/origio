@@ -11,13 +11,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DeptSimpleRespVO {
 
-    @Schema(description = "部门编号", requiredMode = Schema.RequiredMode.REQUIRED, example = "1024")
+    @Schema(description = "部门编号", requiredMode = Schema.RequiredMode.REQUIRED)
     private Long id;
 
-    @Schema(description = "部门名称", requiredMode = Schema.RequiredMode.REQUIRED, example = "芋道")
+    @Schema(description = "部门编码", requiredMode = Schema.RequiredMode.REQUIRED)
+    private Long code;
+
+    @Schema(description = "部门名称", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
 
-    @Schema(description = "父部门 ID", requiredMode = Schema.RequiredMode.REQUIRED, example = "1024")
+    @Schema(description = "父部门 ID", requiredMode = Schema.RequiredMode.REQUIRED)
     private Long parentId;
 
 }
