@@ -16,6 +16,10 @@ public class DeptRespDTO {
      */
     private Long id;
     /**
+     * 部门编码
+     */
+    private Long code;
+    /**
      * 部门名称
      */
     private String name;

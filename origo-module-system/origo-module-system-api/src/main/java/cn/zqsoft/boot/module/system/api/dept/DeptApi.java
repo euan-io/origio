@@ -6,6 +6,7 @@ import cn.zqsoft.boot.module.system.api.dept.dto.DeptRespDTO;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * 部门 API 接口
@@ -58,4 +59,11 @@ public interface DeptApi {
      */
     List<DeptRespDTO> getChildDeptList(Long id);
 
+    /**
+     * 获取部门信息 形成map便于检索 默认检索条件部门开启状态数据
+     * @param keyFunc 需要合并的key
+     * @return Map
+     * @param <K> 主键key
+     */
+    <K> Map<K, DeptRespDTO> getDeptMapInfo(Function<DeptRespDTO, K> keyFunc);
 }
