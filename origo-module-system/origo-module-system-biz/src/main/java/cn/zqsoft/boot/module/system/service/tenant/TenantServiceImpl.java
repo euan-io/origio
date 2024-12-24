@@ -9,6 +9,8 @@ import cn.zqsoft.boot.framework.common.pojo.PageResult;
 import cn.zqsoft.boot.framework.common.util.collection.CollectionUtils;
 import cn.zqsoft.boot.framework.common.util.date.DateUtils;
 import cn.zqsoft.boot.framework.common.util.object.BeanUtils;
+import cn.zqsoft.boot.framework.security.core.LoginUser;
+import cn.zqsoft.boot.framework.security.core.util.SecurityFrameworkUtils;
 import cn.zqsoft.boot.framework.tenant.config.TenantProperties;
 import cn.zqsoft.boot.framework.tenant.core.context.TenantContextHolder;
 import cn.zqsoft.boot.framework.tenant.core.util.TenantUtils;
@@ -97,6 +99,12 @@ public class TenantServiceImpl implements TenantService {
     @Override
     @DSTransactional // 多数据源，使用 @DSTransactional 保证本地事务，以及数据源的切换
     public Long createTenant(TenantSaveReqVO createReqVO) {
+        if(ObjectUtil.isNotNull(createReqVO.getId())){
+            LoginUser loginUser = SecurityFrameworkUtils.getLoginUser();
+            if (!permissionService.hasAnyRoles(loginUser.getId(), RoleCodeEnum.SUPER_ADMIN.getCode())) {
+                throw exception(NEED_SUPER_ADMIN);
+            }
+        }
         // 校验租户名称是否重复
         validTenantNameDuplicate(createReqVO.getName(), null);
         // 校验租户域名是否重复
