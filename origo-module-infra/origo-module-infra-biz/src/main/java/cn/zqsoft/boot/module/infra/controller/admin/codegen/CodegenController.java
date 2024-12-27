@@ -145,7 +145,7 @@ public class CodegenController {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ZipUtil.zip(outputStream, paths, ins);
         // 输出
-        writeAttachment(response, "codegen.zip", outputStream.toByteArray());
+        writeAttachment(response, "codegen.zip", outputStream.toByteArray(),false);
     }
 
 }

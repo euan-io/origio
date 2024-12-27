@@ -89,7 +89,12 @@ public class FileController {
             response.setStatus(HttpStatus.NOT_FOUND.value());
             return;
         }
-        writeAttachment(response, path, content);
+
+        // 检查是否为预览请求
+        String viewParam = request.getParameter("view");
+        boolean isPreview = StrUtil.isNotEmpty(viewParam);
+
+        writeAttachment(response, path, content,isPreview);
     }
 
     @GetMapping("/page")

@@ -58,9 +58,14 @@ public class FileTypeUtils {
      * @param filename 文件名
      * @param content  附件内容
      */
-    public static void writeAttachment(HttpServletResponse response, String filename, byte[] content) throws IOException {
-        // 设置 header 和 contentType
-        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
+    public static void writeAttachment(HttpServletResponse response, String filename, byte[] content, boolean isPreview) throws IOException {
+        // 如果不是预览，设置为下载附件
+        if (isPreview) {
+            response.setHeader("Content-Disposition", "inline;filename=" + URLEncoder.encode(filename, "UTF-8"));
+        } else {
+            response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
+        }
+
         String contentType = getMineType(content, filename);
         response.setContentType(contentType);
         // 针对 video 的特殊处理，解决视频地址在移动端播放的兼容性问题
