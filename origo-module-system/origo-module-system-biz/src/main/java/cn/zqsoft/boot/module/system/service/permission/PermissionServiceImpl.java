@@ -3,8 +3,10 @@ package cn.zqsoft.boot.module.system.service.permission;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import cn.zqsoft.boot.framework.common.enums.CommonStatusEnum;
+import cn.zqsoft.boot.framework.common.exception.ServiceException;
 import cn.zqsoft.boot.framework.common.util.collection.CollectionUtils;
 import cn.zqsoft.boot.framework.datapermission.core.annotation.DataPermission;
 import cn.zqsoft.boot.module.system.api.permission.dto.DeptDataPermissionRespDTO;
@@ -16,6 +18,7 @@ import cn.zqsoft.boot.module.system.dal.mysql.permission.RoleMenuMapper;
 import cn.zqsoft.boot.module.system.dal.mysql.permission.UserRoleMapper;
 import cn.zqsoft.boot.module.system.dal.redis.RedisKeyConstants;
 import cn.zqsoft.boot.module.system.enums.permission.DataScopeEnum;
+import cn.zqsoft.boot.module.system.enums.permission.RoleCodeEnum;
 import cn.zqsoft.boot.module.system.service.dept.DeptService;
 import cn.zqsoft.boot.module.system.service.user.AdminUserService;
 import com.baomidou.dynamic.datasource.annotation.DSTransactional;
@@ -32,9 +35,13 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.convertSet;
 import static cn.zqsoft.boot.framework.common.util.json.JsonUtils.toJsonString;
+import static cn.zqsoft.boot.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.zqsoft.boot.module.system.enums.ErrorCodeConstants.REQUIRE_AT_LEAST_ONE_TENANT_ADMIN;
+import static cn.zqsoft.boot.module.system.enums.ErrorCodeConstants.ROLE_NOT_EXISTS;
 
 /**
  * 权限 Service 实现类
@@ -202,24 +209,37 @@ public class PermissionServiceImpl implements PermissionService {
     @DSTransactional // 多数据源，使用 @DSTransactional 保证本地事务，以及数据源的切换
     @CacheEvict(value = RedisKeyConstants.USER_ROLE_ID_LIST, key = "#userId")
     public void assignUserRole(Long userId, Set<Long> roleIds) {
-        // 获得角色拥有角色编号
+        // 获取用户现有的角色
         Set<Long> dbRoleIds = convertSet(userRoleMapper.selectListByUserId(userId),
                 UserRoleDO::getRoleId);
+
         // 计算新增和删除的角色编号
         Set<Long> roleIdList = CollUtil.emptyIfNull(roleIds);
         Collection<Long> createRoleIds = CollUtil.subtract(roleIdList, dbRoleIds);
-        Collection<Long> deleteMenuIds = CollUtil.subtract(dbRoleIds, roleIdList);
-        // 执行新增和删除。对于已经授权的角色，不用做任何处理
+        Collection<Long> deleteRoleIds = CollUtil.subtract(dbRoleIds, roleIdList);
+        // 获取租户管理员的角色编号
+        Long tenantAdminRoleId = roleService.getTenantAdminRoleId();
+        List<UserRoleDO> userRoleDOS = userRoleMapper.selectList(UserRoleDO::getRoleId, tenantAdminRoleId);
+        Set<Long> tenantAdminRoleIds = userRoleDOS.stream().map(UserRoleDO::getId).collect(Collectors.toSet());
+        // tenantAdminRoleIds中去除和deleteRoleIds相同的部分
+        tenantAdminRoleIds = (Set<Long>) CollUtil.subtract(tenantAdminRoleIds, deleteRoleIds);
+        if (!CollectionUtil.isEmpty(tenantAdminRoleIds)){
+            throw exception(REQUIRE_AT_LEAST_ONE_TENANT_ADMIN);
+        }
+        // 执行新增角色操作
         if (!CollectionUtil.isEmpty(createRoleIds)) {
-            userRoleMapper.insertBatch(CollectionUtils.convertList(createRoleIds, roleId -> {
+            List<UserRoleDO> userRoleList = CollectionUtils.convertList(createRoleIds, roleId -> {
                 UserRoleDO entity = new UserRoleDO();
                 entity.setUserId(userId);
                 entity.setRoleId(roleId);
                 return entity;
-            }));
+            });
+            userRoleMapper.insertBatch(userRoleList);
         }
-        if (!CollectionUtil.isEmpty(deleteMenuIds)) {
-            userRoleMapper.deleteListByUserIdAndRoleIdIds(userId, deleteMenuIds);
+
+        // 执行删除角色操作
+        if (!CollectionUtil.isEmpty(deleteRoleIds)) {
+            userRoleMapper.deleteListByUserIdAndRoleIdIds(userId, deleteRoleIds);
         }
     }
 

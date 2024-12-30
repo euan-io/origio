@@ -33,6 +33,8 @@ public interface ErrorCodeConstants {
     ErrorCode ROLE_IS_DISABLE = new ErrorCode(1_002_002_004, "名字为【{}】的角色已被禁用");
     ErrorCode ROLE_ADMIN_CODE_ERROR = new ErrorCode(1_002_002_005, "标识【{}】不能使用");
 
+    ErrorCode REQUIRE_AT_LEAST_ONE_TENANT_ADMIN = new ErrorCode(1_002_002_006, "租户下至少保留一个管理员角色");
+
     // ========== 用户模块 1-002-003-000 ==========
     ErrorCode USER_USERNAME_EXISTS = new ErrorCode(1_002_003_000, "用户账号已经存在");
     ErrorCode USER_MOBILE_EXISTS = new ErrorCode(1_002_003_001, "手机号已经存在");

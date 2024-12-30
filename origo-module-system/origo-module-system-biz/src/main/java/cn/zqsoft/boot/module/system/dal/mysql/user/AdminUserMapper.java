@@ -3,7 +3,10 @@ package cn.zqsoft.boot.module.system.dal.mysql.user;
 import cn.zqsoft.boot.framework.common.pojo.PageResult;
 import cn.zqsoft.boot.framework.mybatis.core.mapper.BaseMapperX;
 import cn.zqsoft.boot.framework.mybatis.core.query.LambdaQueryWrapperX;
+import cn.zqsoft.boot.framework.mybatis.core.query.MPJLambdaWrapperX;
 import cn.zqsoft.boot.module.system.controller.admin.user.vo.user.UserPageReqVO;
+import cn.zqsoft.boot.module.system.dal.dataobject.permission.RoleDO;
+import cn.zqsoft.boot.module.system.dal.dataobject.permission.UserRoleDO;
 import cn.zqsoft.boot.module.system.dal.dataobject.user.AdminUserDO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -47,4 +50,14 @@ public interface AdminUserMapper extends BaseMapperX<AdminUserDO> {
         return selectList(AdminUserDO::getDeptId, deptIds);
     }
 
+    default List<AdminUserDO> selectByTenantIdAndRoleCode(Long tenantId, String code) {
+        MPJLambdaWrapperX<AdminUserDO> wrapperX = new MPJLambdaWrapperX<>();
+        wrapperX.selectAll(AdminUserDO.class)
+                .eq(AdminUserDO::getTenantId, tenantId)
+                .eq(AdminUserDO::getStatus, 1)
+                .eq(RoleDO::getCode, code)
+                .leftJoin(UserRoleDO.class,UserRoleDO::getUserId, AdminUserDO::getId)
+                .leftJoin(RoleDO.class,RoleDO::getId, UserRoleDO::getRoleId);
+        return selectJoinList(AdminUserDO.class, wrapperX);
+    }
 }

@@ -25,9 +25,11 @@ import cn.zqsoft.boot.module.system.dal.dataobject.dept.UserPostDO;
 import cn.zqsoft.boot.module.system.dal.dataobject.user.AdminUserDO;
 import cn.zqsoft.boot.module.system.dal.mysql.dept.UserPostMapper;
 import cn.zqsoft.boot.module.system.dal.mysql.user.AdminUserMapper;
+import cn.zqsoft.boot.module.system.enums.permission.RoleCodeEnum;
 import cn.zqsoft.boot.module.system.service.dept.DeptService;
 import cn.zqsoft.boot.module.system.service.dept.PostService;
 import cn.zqsoft.boot.module.system.service.permission.PermissionService;
+import cn.zqsoft.boot.module.system.service.permission.RoleService;
 import cn.zqsoft.boot.module.system.service.tenant.TenantService;
 import com.google.common.annotations.VisibleForTesting;
 import com.mzt.logapi.context.LogRecordContext;
@@ -44,6 +46,7 @@ import javax.validation.ConstraintViolationException;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static cn.zqsoft.boot.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.zqsoft.boot.framework.common.util.collection.CollectionUtils.convertList;
@@ -228,6 +231,21 @@ public class AdminUserServiceImpl implements AdminUserService {
         // 3. 记录操作日志上下文
         LogRecordContext.putVariable("user", user);
         LogRecordContext.putVariable("newPassword", updateObj.getPassword());
+    }
+
+
+    @Override
+    public void updateUsersPassword(Set<Long> userIds, String password) {
+        // 校验用户存在
+        validateUserList(userIds);
+        // 更新密码
+        userMapper.updateById(userIds.stream().map(id -> {
+            AdminUserDO updateObj = new AdminUserDO();
+            updateObj.setId(id);
+            // 加密密码
+            updateObj.setPassword(encodePassword(password));
+            return updateObj;
+        }).collect(Collectors.toList()));
     }
 
     @Override
@@ -513,6 +531,13 @@ public class AdminUserServiceImpl implements AdminUserService {
     public boolean isPasswordMatch(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
+
+    @Override
+    public List<AdminUserDO> getTenantAdminUserListByTenantId(Long tenantId) {
+        return userMapper.selectByTenantIdAndRoleCode(tenantId, RoleCodeEnum.TENANT_ADMIN.getCode());
+    }
+
+
 
     /**
      * 对密码进行加密

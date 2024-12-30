@@ -14,10 +14,7 @@ import cn.zqsoft.boot.module.system.dal.dataobject.user.AdminUserDO;
 
 import javax.validation.Valid;
 import java.io.InputStream;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 后台用户 Service 接口
@@ -216,4 +213,17 @@ public interface AdminUserService {
      */
     boolean isPasswordMatch(String rawPassword, String encodedPassword);
 
+    /**
+     * 获取租户管理员用户列表
+     * @param tenantId 租户编号
+     * @return 用户列表
+     */
+    List<AdminUserDO> getTenantAdminUserListByTenantId(Long tenantId);
+
+    /**
+     * 批量修改用户密码
+     * @param userIds 用户编号集合
+     * @param password 密码
+     */
+    void updateUsersPassword(Set<Long> userIds, String password);
 }

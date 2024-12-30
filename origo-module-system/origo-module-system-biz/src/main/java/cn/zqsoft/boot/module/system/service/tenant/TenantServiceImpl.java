@@ -22,6 +22,7 @@ import cn.zqsoft.boot.module.system.dal.dataobject.permission.MenuDO;
 import cn.zqsoft.boot.module.system.dal.dataobject.permission.RoleDO;
 import cn.zqsoft.boot.module.system.dal.dataobject.tenant.TenantDO;
 import cn.zqsoft.boot.module.system.dal.dataobject.tenant.TenantPackageDO;
+import cn.zqsoft.boot.module.system.dal.dataobject.user.AdminUserDO;
 import cn.zqsoft.boot.module.system.dal.mysql.tenant.TenantMapper;
 import cn.zqsoft.boot.module.system.enums.permission.RoleCodeEnum;
 import cn.zqsoft.boot.module.system.enums.permission.RoleTypeEnum;
@@ -94,6 +95,20 @@ public class TenantServiceImpl implements TenantService {
         if (DateUtils.isExpired(tenant.getExpireTime())) {
             throw exception(TENANT_EXPIRE, tenant.getName());
         }
+    }
+
+    @Override
+    public void updateAdminPassword(Long tenantId, String password) {
+        TenantContextHolder.setIgnore(true);
+        // 获取租户的管理员用户，有且只有一个
+        TenantDO tenantDO = tenantMapper.selectById(tenantId);
+        Assert.notNull(tenantDO, "租户不存在");
+        // 获取该租户名下的所有租户管理员用户
+        List<AdminUserDO> users = userService.getTenantAdminUserListByTenantId(tenantId);
+        Assert.isTrue(CollUtil.isEmpty(users), "租户管理员用户为空");
+        // 转换成idSet
+        Set<Long> userIds = CollectionUtils.convertSet(users, AdminUserDO::getId);
+        userService.updateUsersPassword(userIds, password);
     }
 
     @Override

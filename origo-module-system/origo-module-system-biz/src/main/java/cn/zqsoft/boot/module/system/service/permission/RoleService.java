@@ -121,4 +121,17 @@ public interface RoleService {
      */
     void validateRoleList(Collection<Long> ids);
 
+    /**
+     * 根据角色编码查询角色
+     * @param code 角色编码
+     * @return  角色
+     */
+    RoleDO getRoleByCode(String code);
+
+    /**
+     * 获得租户管理员的角色编号集合
+     * @return 角色编号集合
+     */
+    Long getTenantAdminRoleId();
+
 }

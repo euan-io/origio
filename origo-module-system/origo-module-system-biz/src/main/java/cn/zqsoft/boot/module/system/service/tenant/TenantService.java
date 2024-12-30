@@ -127,4 +127,10 @@ public interface TenantService {
      */
     void validTenant(Long id);
 
+    /**
+     * 更新租户管理员的密码
+     * @param tenantId 租户id
+     * @param password 密码
+     */
+    void updateAdminPassword(Long tenantId, String password);
 }

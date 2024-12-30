@@ -6,10 +6,8 @@ import cn.zqsoft.boot.framework.common.pojo.PageParam;
 import cn.zqsoft.boot.framework.common.pojo.PageResult;
 import cn.zqsoft.boot.framework.common.util.object.BeanUtils;
 import cn.zqsoft.boot.framework.excel.core.util.ExcelUtils;
-import cn.zqsoft.boot.module.system.controller.admin.tenant.vo.tenant.TenantPageReqVO;
-import cn.zqsoft.boot.module.system.controller.admin.tenant.vo.tenant.TenantRespVO;
-import cn.zqsoft.boot.module.system.controller.admin.tenant.vo.tenant.TenantSaveReqVO;
-import cn.zqsoft.boot.module.system.controller.admin.tenant.vo.tenant.TenantSimpleRespVO;
+import cn.zqsoft.boot.module.system.controller.admin.tenant.vo.tenant.*;
+import cn.zqsoft.boot.module.system.controller.admin.user.vo.user.UserUpdatePasswordReqVO;
 import cn.zqsoft.boot.module.system.dal.dataobject.tenant.TenantDO;
 import cn.zqsoft.boot.module.system.service.tenant.TenantService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -106,6 +104,15 @@ public class TenantController {
         // 导出 Excel
         ExcelUtils.write(response, "租户.xls", "数据", TenantRespVO.class,
                 BeanUtils.toBean(list, TenantRespVO.class));
+    }
+
+
+    @PutMapping("/update-password")
+    @Operation(summary = "重置用户密码")
+    @PreAuthorize("@ss.hasPermission('system:user:update-password')")
+    public CommonResult<Boolean> updateAdminPassword(@Valid @RequestBody TenantAdminUpdatePasswordReqVO reqVO) {
+        tenantService.updateAdminPassword(reqVO.getId(),reqVO.getPassword());
+        return success(true);
     }
 
 }
