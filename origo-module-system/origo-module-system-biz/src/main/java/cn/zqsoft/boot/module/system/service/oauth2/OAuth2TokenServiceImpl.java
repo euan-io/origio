@@ -83,10 +83,10 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
         }
 
         // 移除相关的访问令牌
-        List<OAuth2AccessTokenDO> accessTokenDOs = oauth2AccessTokenMapper.selectListByRefreshToken(refreshToken);
-        if (CollUtil.isNotEmpty(accessTokenDOs)) {
-            oauth2AccessTokenMapper.deleteByIds(convertSet(accessTokenDOs, OAuth2AccessTokenDO::getId));
-            oauth2AccessTokenRedisDAO.deleteList(convertSet(accessTokenDOs, OAuth2AccessTokenDO::getAccessToken));
+        List<OAuth2AccessTokenDO> accessTokenList = oauth2AccessTokenMapper.selectListByRefreshToken(refreshToken);
+        if (CollUtil.isNotEmpty(accessTokenList)) {
+            oauth2AccessTokenMapper.deleteByIds(convertSet(accessTokenList, OAuth2AccessTokenDO::getId));
+            oauth2AccessTokenRedisDAO.deleteList(convertSet(accessTokenList, OAuth2AccessTokenDO::getAccessToken));
         }
 
         // 已过期的情况下，删除刷新令牌
@@ -151,6 +151,24 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
         // 删除刷新令牌
         oauth2RefreshTokenMapper.deleteByRefreshToken(accessTokenDO.getRefreshToken());
         return accessTokenDO;
+    }
+
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void removeAccessTokenByUserId(Long userId) {
+        // 删除访问令牌
+        List<OAuth2AccessTokenDO> accessTokenList = oauth2AccessTokenMapper.selectListByUserId(userId);
+        if(CollUtil.isEmpty(accessTokenList)){
+            return;
+        }
+        oauth2AccessTokenMapper.deleteByUserId(userId);
+        // 删除 Redis缓存
+        for (OAuth2AccessTokenDO accessTokenDO : accessTokenList){
+            oauth2AccessTokenRedisDAO.delete(accessTokenDO.getAccessToken());
+        }
+        // 删除刷新令牌
+        oauth2RefreshTokenMapper.deleteByUserId(userId);
     }
 
     @Override

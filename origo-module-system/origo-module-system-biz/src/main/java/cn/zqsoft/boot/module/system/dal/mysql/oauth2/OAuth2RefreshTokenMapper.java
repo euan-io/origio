@@ -19,4 +19,8 @@ public interface OAuth2RefreshTokenMapper extends BaseMapperX<OAuth2RefreshToken
         return selectOne(OAuth2RefreshTokenDO::getRefreshToken, refreshToken);
     }
 
+    @TenantIgnore
+    default void deleteByUserId(Long userId) {
+        delete(OAuth2RefreshTokenDO::getUserId, userId);
+    }
 }

@@ -19,6 +19,7 @@ public interface OAuth2AccessTokenMapper extends BaseMapperX<OAuth2AccessTokenDO
         return selectOne(OAuth2AccessTokenDO::getAccessToken, accessToken);
     }
 
+
     default List<OAuth2AccessTokenDO> selectListByRefreshToken(String refreshToken) {
         return selectList(OAuth2AccessTokenDO::getRefreshToken, refreshToken);
     }
@@ -32,4 +33,13 @@ public interface OAuth2AccessTokenMapper extends BaseMapperX<OAuth2AccessTokenDO
                 .orderByDesc(OAuth2AccessTokenDO::getId));
     }
 
+    @TenantIgnore
+    default List<OAuth2AccessTokenDO> selectListByUserId(Long userId){
+        return selectList(OAuth2AccessTokenDO::getUserId, userId);
+    }
+
+    @TenantIgnore
+    default void deleteByUserId(Long userId) {
+        delete(OAuth2AccessTokenDO::getUserId, userId);
+    }
 }
