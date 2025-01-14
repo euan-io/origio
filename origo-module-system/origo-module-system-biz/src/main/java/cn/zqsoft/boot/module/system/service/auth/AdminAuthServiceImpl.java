@@ -71,11 +71,6 @@ public class AdminAuthServiceImpl implements AdminAuthService {
     @Value("${origo.captcha.enable:true}")
     private Boolean captchaEnable;
 
-    /**
-     * 单一登录的开关，默认为 false
-     */
-    @Value("${origo.sso.enable:false}")
-    private Boolean ssoEnable;
 
     @Override
     public AdminUserDO authenticate(String username, String password) {
@@ -106,10 +101,6 @@ public class AdminAuthServiceImpl implements AdminAuthService {
         // 使用账号密码，进行登录
         AdminUserDO user = authenticate(reqVO.getUsername(), reqVO.getPassword());
 
-        // 判断是否为单一登录，如果为单一登录，强退其他token
-        if (ssoEnable){
-            logoutByUserId(user.getId());
-        }
 
         // 如果 socialType 非空，说明需要绑定社交用户
         if (reqVO.getSocialType() != null) {

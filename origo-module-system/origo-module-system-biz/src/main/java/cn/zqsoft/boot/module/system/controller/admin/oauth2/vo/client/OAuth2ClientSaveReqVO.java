@@ -73,6 +73,9 @@ public class OAuth2ClientSaveReqVO {
     @Schema(description = "附加信息", example = "{yunai: true}")
     private String additionalInformation;
 
+    @Schema(description = "是否启用单一登录功能")
+    private Boolean oosEnable;
+
     @AssertTrue(message = "附加信息必须是 JSON 格式")
     public boolean isAdditionalInformationJson() {
         return StrUtil.isEmpty(additionalInformation) || JsonUtils.isJson(additionalInformation);

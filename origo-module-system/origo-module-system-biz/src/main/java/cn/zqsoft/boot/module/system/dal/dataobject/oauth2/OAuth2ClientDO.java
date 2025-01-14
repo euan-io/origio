@@ -103,5 +103,9 @@ public class OAuth2ClientDO extends BaseDO {
      * 附加信息，JSON 格式
      */
     private String additionalInformation;
+    /**
+     * 是否开启单一登录
+     */
+    private Boolean oosEnable;
 
 }
