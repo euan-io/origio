@@ -1,6 +1,7 @@
 package cn.zqsoft.boot.framework.common.util.object;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.zqsoft.boot.framework.common.pojo.PageResult;
 import cn.zqsoft.boot.framework.common.util.collection.CollectionUtils;
 
@@ -63,7 +64,7 @@ public class BeanUtils {
         if (source == null || target == null) {
             return;
         }
-        BeanUtil.copyProperties(source, target, false);
+        BeanUtil.copyProperties(source, target, CopyOptions.create().ignoreNullValue());
     }
 
 }
