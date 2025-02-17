@@ -9,6 +9,7 @@ import cn.zqsoft.boot.framework.common.enums.CommonStatusEnum;
 import cn.zqsoft.boot.framework.common.exception.ServiceException;
 import cn.zqsoft.boot.framework.common.util.collection.CollectionUtils;
 import cn.zqsoft.boot.framework.datapermission.core.annotation.DataPermission;
+import cn.zqsoft.boot.framework.tenant.core.context.TenantContextHolder;
 import cn.zqsoft.boot.module.system.api.permission.dto.DeptDataPermissionRespDTO;
 import cn.zqsoft.boot.module.system.dal.dataobject.permission.MenuDO;
 import cn.zqsoft.boot.module.system.dal.dataobject.permission.RoleDO;
@@ -217,14 +218,16 @@ public class PermissionServiceImpl implements PermissionService {
         Set<Long> roleIdList = CollUtil.emptyIfNull(roleIds);
         Collection<Long> createRoleIds = CollUtil.subtract(roleIdList, dbRoleIds);
         Collection<Long> deleteRoleIds = CollUtil.subtract(dbRoleIds, roleIdList);
-        // 获取租户管理员的角色编号
-        Long tenantAdminRoleId = roleService.getTenantAdminRoleId();
-        List<UserRoleDO> userRoleDOS = userRoleMapper.selectList(UserRoleDO::getRoleId, tenantAdminRoleId);
-        Set<Long> tenantAdminRoleIds = userRoleDOS.stream().map(UserRoleDO::getId).collect(Collectors.toSet());
-        // tenantAdminRoleIds中去除和deleteRoleIds相同的部分
-        tenantAdminRoleIds = (Set<Long>) CollUtil.subtract(tenantAdminRoleIds, deleteRoleIds);
-        if (!CollectionUtil.isEmpty(tenantAdminRoleIds)){
-            throw exception(REQUIRE_AT_LEAST_ONE_TENANT_ADMIN);
+        // 非总租户状态下 获取租户管理员的角色编号
+        if (1L != TenantContextHolder.getTenantId()) {
+            Long tenantAdminRoleId = roleService.getTenantAdminRoleId();
+            List<UserRoleDO> userRoles = userRoleMapper.selectList(UserRoleDO::getRoleId, tenantAdminRoleId);
+            Set<Long> tenantAdminRoleIds = userRoles.stream().map(UserRoleDO::getId).collect(Collectors.toSet());
+            // tenantAdminRoleIds中去除和deleteRoleIds相同的部分
+            tenantAdminRoleIds = (Set<Long>) CollUtil.subtract(tenantAdminRoleIds, deleteRoleIds);
+            if (!CollectionUtil.isEmpty(tenantAdminRoleIds)){
+                throw exception(REQUIRE_AT_LEAST_ONE_TENANT_ADMIN);
+            }
         }
         // 执行新增角色操作
         if (!CollectionUtil.isEmpty(createRoleIds)) {
